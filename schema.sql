@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS public.registrations (
     phone VARCHAR(20) NOT NULL,
     branch VARCHAR(100) NOT NULL,
     year VARCHAR(50) NOT NULL,
-    registration_type VARCHAR(50) NOT NULL, -- 'VECTOR 2.0', 'AI/ML WORKSHOP', 'BOTH'
+    registration_type VARCHAR(50) NOT NULL, -- 'BCC (Best Coder Contest)', 'AI/ML WORKSHOP', 'BOTH'
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
 );
 
@@ -135,7 +135,7 @@ DECLARE
     v_both INT;
 BEGIN
     SELECT COUNT(*) INTO v_total FROM public.registrations;
-    SELECT COUNT(*) INTO v_vector FROM public.registrations WHERE registration_type = 'VECTOR 2.0';
+    SELECT COUNT(*) INTO v_vector FROM public.registrations WHERE registration_type = 'BCC (Best Coder Contest)';
     SELECT COUNT(*) INTO v_aiml FROM public.registrations WHERE registration_type = 'AI/ML WORKSHOP';
     SELECT COUNT(*) INTO v_both FROM public.registrations WHERE registration_type = 'BOTH';
 

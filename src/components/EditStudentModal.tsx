@@ -149,7 +149,7 @@ export default function EditStudentModal({ record, onClose, onSave }: EditStuden
               onChange={(e) => setFormData(prev => ({ ...prev, registration_type: e.target.value as any }))}
               className="hr-input bg-[#111116] text-white"
             >
-              <option value="VECTOR 2.0">VECTOR 2.0</option>
+              <option value="BCC (Best Coder Contest)">BCC (Best Coder Contest)</option>
               <option value="AI/ML WORKSHOP">AI/ML WORKSHOP</option>
               <option value="BOTH">BOTH</option>
             </select>

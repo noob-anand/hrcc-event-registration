@@ -28,10 +28,10 @@ export default function AdminStats({ stats }: AdminStatsProps) {
         </div>
       </div>
 
-      {/* VECTOR 2.0 */}
+      {/* BCC (Best Coder Contest) */}
       <div className="bento-card p-5 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3">
-          <span className="card-meta !mb-0 text-xs text-[#05C770]">VECTOR 2.0</span>
+          <span className="card-meta !mb-0 text-xs text-[#05C770]">BCC (Best Coder Contest)</span>
           <div className="p-2 rounded bg-white/5 border border-white/10 text-[#05C770]">
             <Code className="w-4 h-4" />
           </div>

@@ -6,7 +6,7 @@ import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
 import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink } from 'lucide-react';
 
-export type EventType = 'VECTOR 2.0' | 'AI/ML WORKSHOP' | 'BOTH';
+export type EventType = 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
 
 const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
@@ -65,8 +65,8 @@ export default function Home() {
     setFormErr('');
 
     // Check eligibility
-    if ((type === 'VECTOR 2.0' || type === 'BOTH') && formData.year && formData.year !== '4th Year') {
-      setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year to 4th Year.');
+    if ((type === 'BCC (Best Coder Contest)' || type === 'BOTH') && formData.year && formData.year !== '4th Year') {
+      setFormErr('ELIGIBILITY RESTRICTION: BCC (Best Coder Contest) is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year to 4th Year.');
     }
 
     setTimeout(() => {
@@ -81,11 +81,11 @@ export default function Home() {
     const { name, value } = e.target;
     setFormData(prev => {
       const updated = { ...prev, [name]: value };
-      
+
       // Eligibility re-check when year changes
       if (name === 'year') {
-        if ((selectedEvent === 'VECTOR 2.0' || selectedEvent === 'BOTH') && value !== '4th Year') {
-          setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
+        if ((selectedEvent === 'BCC (Best Coder Contest)' || selectedEvent === 'BOTH') && value !== '4th Year') {
+          setFormErr('ELIGIBILITY RESTRICTION: BCC (Best Coder Contest) is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
         } else {
           setFormErr('');
         }
@@ -106,9 +106,9 @@ export default function Home() {
       return;
     }
 
-    // Eligibility check for Vector 2.0 & Both
-    if ((selectedEvent === 'VECTOR 2.0' || selectedEvent === 'BOTH') && formData.year !== '4th Year') {
-      setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
+    // Eligibility check for BCC (Best Coder Contest) & Both
+    if ((selectedEvent === 'BCC (Best Coder Contest)' || selectedEvent === 'BOTH') && formData.year !== '4th Year') {
+      setFormErr('ELIGIBILITY RESTRICTION: BCC (Best Coder Contest) is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
       return;
     }
 
@@ -132,17 +132,17 @@ export default function Home() {
         const msg = data.code === 'DUPLICATE_SCHOLAR'
           ? 'REGISTRATION ALREADY EXISTS — this scholar number is already registered.'
           : data.code === 'CAPACITY_REACHED'
-          ? 'REGISTRATION CLOSED — capacity reached.'
-          : data.code === 'ELIGIBILITY_RESTRICTION'
-          ? data.message
-          : data.code === 'INVALID_EMAIL'
-          ? 'Enter a valid email address.'
-          : data.code === 'INVALID_PHONE'
-          ? 'Enter a valid phone number.'
-          : data.code === 'INVALID_SCHOLAR'
-          ? 'Enter a valid scholar number.'
-          : data.message || 'Unable to complete registration. Please retry.';
-        
+            ? 'REGISTRATION CLOSED — capacity reached.'
+            : data.code === 'ELIGIBILITY_RESTRICTION'
+              ? data.message
+              : data.code === 'INVALID_EMAIL'
+                ? 'Enter a valid email address.'
+                : data.code === 'INVALID_PHONE'
+                  ? 'Enter a valid phone number.'
+                  : data.code === 'INVALID_SCHOLAR'
+                    ? 'Enter a valid scholar number.'
+                    : data.message || 'Unable to complete registration. Please retry.';
+
         setFormErr(msg);
         return;
       }
@@ -157,7 +157,7 @@ export default function Home() {
           origin: { y: 0.6 },
           colors: ['#05C770', '#73D3FB', '#ffffff']
         });
-      } catch (e) {}
+      } catch (e) { }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (e) {
@@ -188,7 +188,7 @@ export default function Home() {
             CAMPUS <span>CREW</span>
           </h1>
           <p>
-            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. <strong>Vector 2.0 (DSA &amp; CP) is on 15 Sept</strong> (exclusively for 4th Year), <strong>AI/ML Workshop is on 16 Sept</strong> (open for all years), and <strong>Spark x HRCC Speaker Session is on 17 Sept</strong>.
+            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. <strong>BCC (Best Coder Contest) (DSA &amp; CP) is on 15 Sept</strong> (exclusively for 4th Year), <strong>AI/ML Workshop is on 16 Sept</strong> (open for all years), and <strong>Spark x HRCC Speaker Session is on 17 Sept</strong>.
           </p>
         </section>
 
@@ -220,7 +220,7 @@ export default function Home() {
                 className="insta-badge"
               >
                 <svg className="w-3.5 h-3.5 text-[#73D3FB] fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
                 <span>FOLLOW @underratedcoder ON INSTAGRAM</span>
                 <ExternalLink className="w-3 h-3 text-gray-400" />
@@ -247,21 +247,22 @@ export default function Home() {
           <section className="section">
             <div className="meta">EVENT NODE // SELECT ACCESS</div>
             <div className="grid">
-              {/* VECTOR 2.0 */}
+              {/* BCC (Best Coder Contest) */}
               <article
-                className={`card choice ${selectedEvent === 'VECTOR 2.0' ? 'selected' : ''}`}
-                onClick={() => handleSelectChoice('VECTOR 2.0')}
+                className={`card choice ${selectedEvent === 'BCC (Best Coder Contest)' ? 'selected' : ''}`}
+                onClick={() => handleSelectChoice('BCC (Best Coder Contest)')}
               >
                 <div className="tick">SELECTED ✓</div>
                 <div className="tag">NODE / 01 // 15 SEPT 2026</div>
                 <h3 className="flex items-center gap-2">
-                  <Code className="w-5 h-5 text-[#05C770]" /> VECTOR 2.0
+                  <Code className="w-5 h-5 text-[#05C770]" /> BCC (Best Coder Contest)
                 </h3>
                 <p>
                   Premier Data Structures, Algorithms (DSA) &amp; Competitive Programming (CP) contest simulating top tech company hiring assessments.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
                   <div className="text-[#05C770] font-bold">&gt;&gt; DATE: TUESDAY, 15 SEPT 2026</div>
+                  <div className="text-[#05C770] font-bold">&gt;&gt; Compulsory For All Final Year Students</div>
                   <div className="text-gray-300">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
                   <div>&gt;&gt; Data Structures (DSA) &amp; Competitive Programming</div>
                   <div>&gt;&gt; Spark x HRCC Speaker Session (17 Sept)</div>
@@ -300,7 +301,7 @@ export default function Home() {
                   <Layers className="w-5 h-5 text-[#05C770]" /> BOTH TRACKS
                 </h3>
                 <p>
-                  Register once for all technical experiences: Vector 2.0 (15 Sept), AI/ML Workshop (16 Sept), and Spark x HRCC Speaker Session (17 Sept).
+                  Register once for all technical experiences: BCC (Best Coder Contest) (15 Sept), AI/ML Workshop (16 Sept), and Spark x HRCC Speaker Session (17 Sept).
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
                   <div className="text-[#05C770] font-bold">&gt;&gt; DATES: 15, 16 &amp; 17 SEPT 2026</div>

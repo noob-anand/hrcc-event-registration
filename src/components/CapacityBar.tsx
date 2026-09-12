@@ -66,18 +66,17 @@ export default function CapacityBar({ stats }: CapacityBarProps) {
       {/* PROGRESS BAR */}
       <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden border border-white/10 p-0.5 relative">
         <div
-          className={`h-full rounded-full transition-all duration-700 ${
-            isFull
+          className={`h-full rounded-full transition-all duration-700 ${isFull
               ? 'bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.5)]'
               : 'bg-gradient-to-r from-[#05C770] to-[#73D3FB] shadow-[0_0_15px_rgba(5,199,112,0.5)]'
-          }`}
+            }`}
           style={{ width: `${percentage}%` }}
         />
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-4 text-center font-mono text-xs pt-3 border-t border-white/5 text-gray-400">
         <div className="bg-white/2 p-2 rounded border border-white/5">
-          <span className="text-gray-500 block text-[10px] uppercase">VECTOR 2.0</span>
+          <span className="text-gray-500 block text-[10px] uppercase">BCC (Best Coder Contest)</span>
           <span className="text-white font-bold">{stats.vector}</span>
         </div>
         <div className="bg-white/2 p-2 rounded border border-white/5">

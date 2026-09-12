@@ -119,7 +119,7 @@ export default function AdminTable({ records, onRefresh }: AdminTableProps) {
           className="hr-input bg-[#111116] text-xs text-white"
         >
           <option value="ALL">All Registration Types</option>
-          <option value="VECTOR 2.0">VECTOR 2.0</option>
+          <option value="BCC (Best Coder Contest)">BCC (Best Coder Contest)</option>
           <option value="AI/ML WORKSHOP">AI/ML WORKSHOP</option>
           <option value="BOTH">BOTH</option>
         </select>
@@ -191,13 +191,12 @@ export default function AdminTable({ records, onRefresh }: AdminTableProps) {
                     {r.branch} ({r.year})
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
-                    <span className={`px-2 py-0.5 rounded font-mono text-[10px] font-bold ${
-                      r.registration_type === 'VECTOR 2.0'
+                    <span className={`px-2 py-0.5 rounded font-mono text-[10px] font-bold ${r.registration_type === 'BCC (Best Coder Contest)'
                         ? 'bg-[#05C770]/15 text-[#05C770] border border-[#05C770]/30'
                         : r.registration_type === 'AI/ML WORKSHOP'
-                        ? 'bg-[#73D3FB]/15 text-[#73D3FB] border border-[#73D3FB]/30'
-                        : 'bg-purple-500/15 text-purple-300 border border-purple-500/30'
-                    }`}>
+                          ? 'bg-[#73D3FB]/15 text-[#73D3FB] border border-[#73D3FB]/30'
+                          : 'bg-purple-500/15 text-purple-300 border border-purple-500/30'
+                      }`}>
                       {r.registration_type}
                     </span>
                   </td>

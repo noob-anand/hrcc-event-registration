@@ -3,8 +3,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'HRCC Event Registration 2026 | HackerRank Campus Crew IIIT Bhopal',
-  description: 'Official Registration Portal for HackerRank Campus Crew (HRCC) Strategic Technical Chapter Launch 2026 at IIIT Bhopal. Featuring Vector 2.0 & AI/ML Workshop.',
-  keywords: ['HackerRank', 'HRCC', 'IIIT Bhopal', 'Vector 2.0', 'AI ML Workshop', 'Coding Event', 'Event Registration'],
+  description: 'Official Registration Portal for HackerRank Campus Crew (HRCC) Strategic Technical Chapter Launch 2026 at IIIT Bhopal. Featuring BCC (Best Coder Contest) & AI/ML Workshop.',
+  keywords: ['HackerRank', 'HRCC', 'IIIT Bhopal', 'BCC (Best Coder Contest)', 'AI ML Workshop', 'Coding Event', 'Event Registration'],
 };
 
 export default function RootLayout({

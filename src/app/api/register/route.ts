@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    if (!['VECTOR 2.0', 'AI/ML WORKSHOP', 'BOTH'].includes(registration_type)) {
+    if (!['BCC (Best Coder Contest)', 'AI/ML WORKSHOP', 'BOTH'].includes(registration_type)) {
       return NextResponse.json({
         success: false,
         code: 'INVALID_TYPE',
@@ -49,12 +49,12 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    // Eligibility check: Vector 2.0 & Both are exclusively for 4th Year students
-    if ((registration_type === 'VECTOR 2.0' || registration_type === 'BOTH') && year !== '4th Year') {
+    // Eligibility check: BCC (Best Coder Contest) & Both are exclusively for 4th Year students
+    if ((registration_type === 'BCC (Best Coder Contest)' || registration_type === 'BOTH') && year !== '4th Year') {
       return NextResponse.json({
         success: false,
         code: 'ELIGIBILITY_RESTRICTION',
-        message: 'ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year.'
+        message: 'ELIGIBILITY RESTRICTION: BCC (Best Coder Contest) is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year.'
       }, { status: 400 });
     }
 

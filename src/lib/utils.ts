@@ -7,7 +7,7 @@ export interface RegistrationRecord {
   phone: string;
   branch: string;
   year: string;
-  registration_type: 'VECTOR 2.0' | 'AI/ML WORKSHOP' | 'BOTH';
+  registration_type: 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
   created_at: string;
 }
 
@@ -23,13 +23,13 @@ export interface EventStats {
 // Generate unique Registration ID format: HRCC-[VEC|AIML|BOTH]-[SEQUENCE]
 export function generateRegistrationId(type: string, sequenceNumber?: number): string {
   let prefix = 'BOTH';
-  if (type === 'VECTOR 2.0') prefix = 'VEC';
+  if (type === 'BCC (Best Coder Contest)') prefix = 'VEC';
   if (type === 'AI/ML WORKSHOP') prefix = 'AIML';
-  
-  const randomNum = sequenceNumber 
-    ? String(sequenceNumber).padStart(4, '0') 
+
+  const randomNum = sequenceNumber
+    ? String(sequenceNumber).padStart(4, '0')
     : String(Math.floor(100 + Math.random() * 9000)).padStart(4, '0');
-    
+
   return `HRCC-${prefix}-${randomNum}`;
 }
 

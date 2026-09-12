@@ -3,7 +3,7 @@
 import React from 'react';
 import { Code, Cpu, Layers, CheckCircle2, Sparkles } from 'lucide-react';
 
-export type EventType = 'VECTOR 2.0' | 'AI/ML WORKSHOP' | 'BOTH';
+export type EventType = 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
 
 interface EventCardProps {
   type: EventType;
@@ -28,7 +28,7 @@ export default function EventCard({
 }: EventCardProps) {
   const getIcon = () => {
     switch (type) {
-      case 'VECTOR 2.0':
+      case 'BCC (Best Coder Contest)':
         return <Code className="w-6 h-6 text-[#05C770]" />;
       case 'AI/ML WORKSHOP':
         return <Cpu className="w-6 h-6 text-[#73D3FB]" />;
@@ -40,9 +40,8 @@ export default function EventCard({
   return (
     <div
       onClick={() => onSelect(type)}
-      className={`bento-card cursor-pointer transition-all duration-300 flex flex-col justify-between ${
-        selected ? 'bento-card-selected' : 'hover:border-[#05C770]/50'
-      }`}
+      className={`bento-card cursor-pointer transition-all duration-300 flex flex-col justify-between ${selected ? 'bento-card-selected' : 'hover:border-[#05C770]/50'
+        }`}
     >
       <div>
         <div className="flex items-center justify-between mb-4">
@@ -54,11 +53,10 @@ export default function EventCard({
               </span>
             )}
             <div
-              className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
-                selected
+              className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${selected
                   ? 'bg-[#05C770] border-[#05C770] text-black'
                   : 'border-white/20 text-transparent'
-              }`}
+                }`}
             >
               <CheckCircle2 className="w-4 h-4 fill-current" />
             </div>
@@ -94,11 +92,10 @@ export default function EventCard({
           e.stopPropagation();
           onSelect(type);
         }}
-        className={`w-full py-3 rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all border ${
-          selected
+        className={`w-full py-3 rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all border ${selected
             ? 'bg-[#05C770] text-[#08080A] border-[#05C770] shadow-[0_0_15px_rgba(5,199,112,0.4)]'
             : 'bg-white/5 text-gray-300 border-white/10 hover:border-[#05C770] hover:text-[#05C770]'
-        }`}
+          }`}
       >
         {selected ? '[ NODE SELECTED ]' : 'SELECT REGISTRATION NODE'}
       </button>

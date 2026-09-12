@@ -6,8 +6,8 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 export const isSupabaseConfigured = Boolean(
-  supabaseUrl && 
-  supabaseUrl !== 'https://your-supabase-project.supabase.co' && 
+  supabaseUrl &&
+  supabaseUrl !== 'https://your-supabase-project.supabase.co' &&
   (supabaseAnonKey || supabaseServiceKey)
 );
 
@@ -49,10 +49,10 @@ export async function getStatsDb(): Promise<EventStats> {
     if (!error && data) {
       return data as EventStats;
     }
-    
+
     // Direct count fallback query
     const { count: total } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true });
-    const { count: vector } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'VECTOR 2.0');
+    const { count: vector } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'BCC (Best Coder Contest)');
     const { count: aiml } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'AI/ML WORKSHOP');
     const { count: both } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'BOTH');
 
@@ -68,7 +68,7 @@ export async function getStatsDb(): Promise<EventStats> {
   }
 
   const total = memoryStore.length;
-  const vector = memoryStore.filter(r => r.registration_type === 'VECTOR 2.0').length;
+  const vector = memoryStore.filter(r => r.registration_type === 'BCC (Best Coder Contest)').length;
   const aiml = memoryStore.filter(r => r.registration_type === 'AI/ML WORKSHOP').length;
   const both = memoryStore.filter(r => r.registration_type === 'BOTH').length;
 
@@ -89,7 +89,7 @@ export async function registerStudentDb(data: {
   email: string;
   branch: string;
   year: string;
-  registration_type: 'VECTOR 2.0' | 'AI/ML WORKSHOP' | 'BOTH';
+  registration_type: 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
 }): Promise<{ success: boolean; code: string; message: string; record?: RegistrationRecord }> {
   const scholarUpper = data.scholar_number.trim().toUpperCase();
 
@@ -195,7 +195,7 @@ export async function deleteRegistrationDb(id: string): Promise<{ success: boole
 
   const initialCount = memoryStore.length;
   memoryStore = memoryStore.filter(r => r.id !== id);
-  
+
   if (memoryStore.length < initialCount) {
     return { success: true, message: 'Registration permanently deleted.' };
   }

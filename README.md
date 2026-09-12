@@ -8,7 +8,7 @@ Official production-ready event registration platform built for **HackerRank Cam
 
 ### 1. Student Public Portal (`/`)
 - **Event Options**: 
-  1. `VECTOR 2.0` (Algorithmic OA Warfare & Speed Coding)
+  1. `BCC (Best Coder Contest)` (Algorithmic OA Warfare & Speed Coding)
   2. `AI/ML WORKSHOP` (Enterprise Model Engineering & Deployment)
   3. `BOTH` (Complete All-Access Node Pass)
 - **Live Capacity Counter**: Real-time counter (`237 / 300 REGISTERED`), visual seat progress bar, remaining seat badge, and 3-day registration countdown.
@@ -18,7 +18,7 @@ Official production-ready event registration platform built for **HackerRank Cam
 
 ### 2. Admin Management Dashboard (`/admin`)
 - **Protected Access**: Requires admin authorization (default password: `admin2026`).
-- **Live Statistics Overview**: Analytics cards for Total, Vector 2.0, AI/ML Workshop, Both, and Capacity Gauge.
+- **Live Statistics Overview**: Analytics cards for Total, BCC (Best Coder Contest), AI/ML Workshop, Both, and Capacity Gauge.
 - **Registrations Table**: Search by Name, Scholar Number, Phone, Email, or Registration ID. Filter by Event Track, Branch, and Academic Year. Sort by timestamp or name.
 - **CRUD Operations**: View full student pass, Edit student details, and Permanent Delete with confirmation dialog (`Are you sure you want to permanently delete this registration?`).
 - **CSV Export**: One-click `EXPORT CSV` button downloading active database records.
