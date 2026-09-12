@@ -48,7 +48,7 @@ export default function Header({ isAdmin = false }: HeaderProps) {
           </Link>
         ) : (
           <Link
-            href="/admin"
+            href="/hrcc"
             className="btn-hr-secondary text-xs !py-2 !px-3.5 flex items-center gap-1.5 border-[#05C770]/30 text-[#05C770]"
           >
             <Shield className="w-4 h-4" />
