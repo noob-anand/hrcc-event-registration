@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { QRCodeSVG } from 'qrcode.react';
 import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
-import { Terminal, Shield, Code, Cpu, Layers, CheckCircle2, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle } from 'lucide-react';
+import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink } from 'lucide-react';
 
 export type EventType = 'VECTOR 2.0' | 'AI/ML WORKSHOP' | 'BOTH';
 
 const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
 export default function Home() {
-  const [selectedEvent, setSelectedEvent] = useState<EventType | ''>('BOTH');
+  const [selectedEvent, setSelectedEvent] = useState<EventType | ''>('AI/ML WORKSHOP');
   const [confirmedRecord, setConfirmedRecord] = useState<RegistrationRecord | null>(null);
 
   const [formData, setFormData] = useState({
@@ -64,6 +64,12 @@ export default function Home() {
   const handleSelectChoice = (type: EventType) => {
     setSelectedEvent(type);
     setFormErr('');
+
+    // Check eligibility
+    if ((type === 'VECTOR 2.0' || type === 'BOTH') && formData.year && formData.year !== '4th Year') {
+      setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year to 4th Year.');
+    }
+
     setTimeout(() => {
       const formWrap = document.getElementById('formWrap');
       if (formWrap) {
@@ -74,8 +80,22 @@ export default function Home() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (formErr) setFormErr('');
+    setFormData(prev => {
+      const updated = { ...prev, [name]: value };
+      
+      // Eligibility re-check when year changes
+      if (name === 'year') {
+        if ((selectedEvent === 'VECTOR 2.0' || selectedEvent === 'BOTH') && value !== '4th Year') {
+          setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
+        } else {
+          setFormErr('');
+        }
+      }
+
+      return updated;
+    });
+
+    if (name !== 'year' && formErr) setFormErr('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -84,6 +104,12 @@ export default function Home() {
 
     if (!formData.name.trim() || !formData.scholar_number.trim() || !formData.phone.trim() || !formData.email.trim() || !formData.branch.trim() || !formData.year || !selectedEvent) {
       setFormErr('Please complete every required field.');
+      return;
+    }
+
+    // Eligibility check for Vector 2.0 & Both
+    if ((selectedEvent === 'VECTOR 2.0' || selectedEvent === 'BOTH') && formData.year !== '4th Year') {
+      setFormErr('ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or select 4th Year.');
       return;
     }
 
@@ -108,6 +134,8 @@ export default function Home() {
           ? 'REGISTRATION ALREADY EXISTS — this scholar number is already registered.'
           : data.code === 'CAPACITY_REACHED'
           ? 'REGISTRATION CLOSED — capacity reached.'
+          : data.code === 'ELIGIBILITY_RESTRICTION'
+          ? data.message
           : data.code === 'INVALID_EMAIL'
           ? 'Enter a valid email address.'
           : data.code === 'INVALID_PHONE'
@@ -149,7 +177,7 @@ export default function Home() {
         <div className="top">
           <div className="brand flex items-center gap-2">
             <Terminal className="w-4 h-4 text-[#05C770]" />
-            <span>HACKER<b className="text-[#05C770]">RANK</b> CAMPUS CREW // IIIT BHOPAL</span>
+            <span>TNP X HACKER<b className="text-[#05C770]">RANK</b> CAMPUS CREW // IIIT BHOPAL</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="sys">SYSTEM: OPERATIONAL</div>
@@ -163,13 +191,63 @@ export default function Home() {
         <section className="hero">
           <div className="meta">OFFICIAL EVENT REGISTRATION NODE</div>
           <h1>
-            HACKER<span>RANK</span><br />
+            TNP X HACKER<span>RANK</span><br />
             CAMPUS <span>CREW</span>
           </h1>
           <p>
-            Two corporate-grade technical experiences. One registration gateway. Choose Vector 2.0 Algorithmic OA Warfare, AI/ML Enterprise Model Engineering, or both and reserve your seat through the official IIIT Bhopal club node.
+            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. Vector 2.0 is open exclusively for 4th Year students, while AI/ML Workshop is open for all academic years.
           </p>
         </section>
+
+        {/* HORIZONTAL SPEAKER PROMOTION BANNER */}
+        {!confirmedRecord && (
+          <div className="speaker-banner">
+            <div className="space-y-2 max-w-xl">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#05C770]/15 border border-[#05C770]/40 text-[#05C770] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                  <Mic className="w-3 h-3 text-[#05C770]" /> SPECIAL GUEST SPEAKER
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-[#73D3FB]/15 border border-[#73D3FB]/40 text-[#73D3FB] font-mono text-[10px] font-bold uppercase tracking-wider">
+                  TUESDAY, 15 SEPT 2026
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
+                SPEAKER SESSION // <span className="text-[#05C770]">@underratedcoder</span>
+              </h3>
+
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                Joining live for <strong>Vector 2.0</strong> &amp; Placement OA Strategy session on Tuesday, 15th Sept. Learn real-world problem-solving and algorithmic warfare directly from top tech creators.
+              </p>
+
+              <a
+                href="https://www.instagram.com/underratedcoder?igsi=MXBqbHc1cTBvM25kcA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="insta-badge"
+              >
+                <svg className="w-3.5 h-3.5 text-[#73D3FB] fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>FOLLOW @underratedcoder ON INSTAGRAM</span>
+                <ExternalLink className="w-3 h-3 text-gray-400" />
+              </a>
+            </div>
+
+            {/* SPEAKER AVATAR IN CIRCLE ON RIGHT */}
+            <div className="speaker-avatar-circle">
+              <img
+                src="/speaker.png"
+                alt="Guest Speaker @underratedcoder"
+                className="speaker-img"
+                onError={(e) => {
+                  // Fallback avatar
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80";
+                }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* CHOICE GRID SECTION */}
         {!confirmedRecord && (
@@ -182,7 +260,7 @@ export default function Home() {
                 onClick={() => handleSelectChoice('VECTOR 2.0')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 01</div>
+                <div className="tag">NODE / 01 // 4TH YEAR ONLY</div>
                 <h3 className="flex items-center gap-2">
                   <Code className="w-5 h-5 text-[#05C770]" /> VECTOR 2.0
                 </h3>
@@ -190,9 +268,9 @@ export default function Home() {
                   Competitive programming hackathon &amp; speed coding event simulating Goldman Sachs, Adobe, and Uber hiring assessments.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
+                  <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
                   <div>&gt;&gt; Time/Space Complexity (O) Strictness</div>
-                  <div>&gt;&gt; Automated Stress-Testing</div>
-                  <div>&gt;&gt; Logic Under Pressure Evaluation</div>
+                  <div>&gt;&gt; Speaker Session by @underratedcoder (15 Sept)</div>
                 </div>
               </article>
 
@@ -202,7 +280,7 @@ export default function Home() {
                 onClick={() => handleSelectChoice('AI/ML WORKSHOP')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 02</div>
+                <div className="tag">NODE / 02 // OPEN FOR ALL YEARS</div>
                 <h3 className="flex items-center gap-2">
                   <Cpu className="w-5 h-5 text-[#73D3FB]" /> AI/ML WORKSHOP
                 </h3>
@@ -210,9 +288,9 @@ export default function Home() {
                   Hands-on corporate workshop on building, fine-tuning, and deploying production LLMs and neural architectures.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
-                  <div>&gt;&gt; LLM Fine-Tuning &amp; Prompting</div>
+                  <div className="text-[#73D3FB] font-bold">&gt;&gt; ELIGIBILITY: OPEN FOR ALL YEARS</div>
+                  <div>&gt;&gt; LLM Fine-Tuning &amp; Prompt Engineering</div>
                   <div>&gt;&gt; PyTorch Model Deployment</div>
-                  <div>&gt;&gt; Corporate Merit Certification</div>
                 </div>
               </article>
 
@@ -222,7 +300,7 @@ export default function Home() {
                 onClick={() => handleSelectChoice('BOTH')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 03 // MOST POPULAR</div>
+                <div className="tag">NODE / 03 // 4TH YEAR ONLY</div>
                 <h3 className="flex items-center gap-2">
                   <Layers className="w-5 h-5 text-[#05C770]" /> BOTH TRACKS
                 </h3>
@@ -230,9 +308,9 @@ export default function Home() {
                   Register once for both experiences and unlock the complete event track with priority placement merit review.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
+                  <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: 4TH YEAR STUDENTS ONLY</div>
                   <div>&gt;&gt; Full Access Vector 2.0 &amp; AI/ML</div>
-                  <div>&gt;&gt; Priority Placement Certification</div>
-                  <div>&gt;&gt; 1-on-1 Resume &amp; OA Strategy</div>
+                  <div>&gt;&gt; Speaker Session Access (15 Sept)</div>
                 </div>
               </article>
             </div>
@@ -393,19 +471,21 @@ export default function Home() {
               </div>
 
               {/* EVENT CHECK-IN QR CODE */}
-              <div className="flex flex-col items-center justify-center my-6 p-4 bg-white rounded-xl max-w-[220px] mx-auto border border-white/20">
-                <QRCodeSVG
-                  value={JSON.stringify({
-                    reg_id: confirmedRecord.registration_id,
-                    scholar: confirmedRecord.scholar_number,
-                    name: confirmedRecord.name,
-                    type: confirmedRecord.registration_type
-                  })}
-                  size={150}
-                  bgColor="#FFFFFF"
-                  fgColor="#08080A"
-                />
-                <span className="font-mono text-[10px] text-black font-bold tracking-widest uppercase block mt-2">
+              <div className="flex flex-col items-center justify-center my-6 p-4 bg-[#08080A] rounded-xl max-w-[220px] mx-auto border border-white/20">
+                <div className="p-3 bg-white rounded-lg">
+                  <QRCodeSVG
+                    value={JSON.stringify({
+                      reg_id: confirmedRecord.registration_id,
+                      scholar: confirmedRecord.scholar_number,
+                      name: confirmedRecord.name,
+                      type: confirmedRecord.registration_type
+                    })}
+                    size={150}
+                    bgColor="#FFFFFF"
+                    fgColor="#08080A"
+                  />
+                </div>
+                <span className="font-mono text-[10px] text-[#05C770] font-bold tracking-widest uppercase block mt-2">
                   EVENT CHECK-IN QR
                 </span>
               </div>
@@ -424,7 +504,7 @@ export default function Home() {
                   type="button"
                   onClick={() => {
                     setConfirmedRecord(null);
-                    setSelectedEvent('BOTH');
+                    setSelectedEvent('AI/ML WORKSHOP');
                   }}
                 >
                   RETURN TO HOME
@@ -441,7 +521,7 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer className="footer">
-          <span>HRCC // INSTITUTIONAL.NODE.IIITB BY A.S.</span>
+          <span>TNP X HRCC // INSTITUTIONAL.NODE.IIITB</span>
           <Link className="admin-link" href="/admin">
             ADMIN ACCESS PORTAL
           </Link>

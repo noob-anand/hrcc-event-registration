@@ -49,6 +49,15 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
+    // Eligibility check: Vector 2.0 & Both are exclusively for 4th Year students
+    if ((registration_type === 'VECTOR 2.0' || registration_type === 'BOTH') && year !== '4th Year') {
+      return NextResponse.json({
+        success: false,
+        code: 'ELIGIBILITY_RESTRICTION',
+        message: 'ELIGIBILITY RESTRICTION: Vector 2.0 is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year.'
+      }, { status: 400 });
+    }
+
     // Process Database Registration
     const result = await registerStudentDb({
       name,

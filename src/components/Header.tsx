@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Terminal, Shield, Cpu, ExternalLink } from 'lucide-react';
+import { Terminal, Shield, Cpu } from 'lucide-react';
 
 interface HeaderProps {
   isAdmin?: boolean;
@@ -19,7 +19,7 @@ export default function Header({ isAdmin = false }: HeaderProps) {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs text-[#05C770] font-bold tracking-widest uppercase">
-                HACKERRANK
+                TNP X HACKERRANK
               </span>
               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/10 text-gray-300">
                 IIIT BHOPAL
