@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { QRCodeSVG } from 'qrcode.react';
 import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
 import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink } from 'lucide-react';
@@ -464,26 +463,6 @@ export default function Home() {
                   <small>EMAIL</small>
                   <b className="truncate">{confirmedRecord.email}</b>
                 </div>
-              </div>
-
-              {/* EVENT CHECK-IN QR CODE */}
-              <div className="flex flex-col items-center justify-center my-6 p-4 bg-[#08080A] rounded-xl max-w-[220px] mx-auto border border-white/20">
-                <div className="p-3 bg-white rounded-lg">
-                  <QRCodeSVG
-                    value={JSON.stringify({
-                      reg_id: confirmedRecord.registration_id,
-                      scholar: confirmedRecord.scholar_number,
-                      name: confirmedRecord.name,
-                      type: confirmedRecord.registration_type
-                    })}
-                    size={150}
-                    bgColor="#FFFFFF"
-                    fgColor="#08080A"
-                  />
-                </div>
-                <span className="font-mono text-[10px] text-[#05C770] font-bold tracking-widest uppercase block mt-2">
-                  EVENT CHECK-IN QR
-                </span>
               </div>
 
               <div className="actions" style={{ justifyContent: 'center', gap: '12px' }}>
