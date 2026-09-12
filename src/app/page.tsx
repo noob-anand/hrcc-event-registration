@@ -195,7 +195,7 @@ export default function Home() {
             CAMPUS <span>CREW</span>
           </h1>
           <p>
-            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. Vector 2.0 is open exclusively for 4th Year students, while AI/ML Workshop is open for all academic years.
+            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. Vector 2.0 (Data Structures, Algorithms &amp; Competitive Programming) is open exclusively for 4th Year students, while AI/ML Workshop is open for all academic years.
           </p>
         </section>
 
@@ -217,7 +217,7 @@ export default function Home() {
               </h3>
 
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Joining live for <strong>Vector 2.0</strong> &amp; Placement OA Strategy session on Tuesday, 15th Sept. Learn real-world problem-solving and algorithmic warfare directly from top tech creators.
+                Joining live for <strong>Vector 2.0 (DSA &amp; CP Contest)</strong> &amp; Placement OA Strategy session on Tuesday, 15th Sept. Learn advanced problem-solving techniques and algorithmic warfare directly from top tech creators.
               </p>
 
               <a
@@ -265,11 +265,11 @@ export default function Home() {
                   <Code className="w-5 h-5 text-[#05C770]" /> VECTOR 2.0
                 </h3>
                 <p>
-                  Competitive programming hackathon &amp; speed coding event simulating Goldman Sachs, Adobe, and Uber hiring assessments.
+                  Premier Data Structures, Algorithms (DSA) &amp; Competitive Programming (CP) contest simulating top tech company hiring assessments.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
                   <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
-                  <div>&gt;&gt; Time/Space Complexity (O) Strictness</div>
+                  <div>&gt;&gt; Data Structures (DSA) &amp; Competitive Programming (CP)</div>
                   <div>&gt;&gt; Speaker Session by @underratedcoder (15 Sept)</div>
                 </div>
               </article>
@@ -305,11 +305,11 @@ export default function Home() {
                   <Layers className="w-5 h-5 text-[#05C770]" /> BOTH TRACKS
                 </h3>
                 <p>
-                  Register once for both experiences and unlock the complete event track with priority placement merit review.
+                  Register once for both experiences: DSA &amp; Competitive Programming (Vector 2.0) + AI/ML Corporate Engineering Workshop.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
                   <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: 4TH YEAR STUDENTS ONLY</div>
-                  <div>&gt;&gt; Full Access Vector 2.0 &amp; AI/ML</div>
+                  <div>&gt;&gt; DSA, CP &amp; AI/ML Workshop Full Pass</div>
                   <div>&gt;&gt; Speaker Session Access (15 Sept)</div>
                 </div>
               </article>
