@@ -1,17 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const ADMIN_ID = process.env.ADMIN_ID || 'priyanshusoniking';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'hrccforlifebyas';
 const ADMIN_SECRET = process.env.ADMIN_SECRET || 'hrcc_iiitb_secret_key_2026';
 
 export async function POST(req: NextRequest) {
   try {
-    const { password } = await req.json();
+    const { admin_id, password } = await req.json();
 
-    if (!password) {
-      return NextResponse.json({ success: false, message: 'Password is required.' }, { status: 400 });
+    if (!admin_id || !password) {
+      return NextResponse.json({
+        success: false,
+        message: 'Both Admin ID and Password are required.'
+      }, { status: 400 });
     }
 
-    if (password === ADMIN_PASSWORD || password === 'admin2026') {
+    const validId = admin_id.trim() === ADMIN_ID;
+    const validPassword = password === ADMIN_PASSWORD ;
+
+    if (validId && validPassword) {
       const response = NextResponse.json({
         success: true,
         token: ADMIN_SECRET,
@@ -30,9 +37,12 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: false,
-      message: 'INVALID ACCESS KEY: Authorization denied.'
+      message: 'INVALID CREDENTIALS: Admin ID or Password is incorrect.'
     }, { status: 401 });
   } catch (error) {
-    return NextResponse.json({ success: false, message: 'Server error during authentication.' }, { status: 500 });
+    return NextResponse.json({
+      success: false,
+      message: 'Server error during authentication.'
+    }, { status: 500 });
   }
 }
