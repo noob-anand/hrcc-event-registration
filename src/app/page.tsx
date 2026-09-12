@@ -189,13 +189,13 @@ export default function Home() {
 
         {/* HERO SECTION */}
         <section className="hero">
-          <div className="meta">OFFICIAL EVENT REGISTRATION NODE</div>
+          <div className="meta">OFFICIAL EVENT REGISTRATION NODE // 15-16 SEPT 2026</div>
           <h1>
             TNP X HACKER<span>RANK</span><br />
             CAMPUS <span>CREW</span>
           </h1>
           <p>
-            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. Vector 2.0 (Data Structures, Algorithms &amp; Competitive Programming) is open exclusively for 4th Year students, while AI/ML Workshop is open for all academic years.
+            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. <strong>Vector 2.0 (DSA &amp; CP) is on 15 Sept</strong> (exclusively for 4th Year), and <strong>AI/ML Workshop is on 16 Sept</strong> (open for all years).
           </p>
         </section>
 
@@ -217,7 +217,7 @@ export default function Home() {
               </h3>
 
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Joining live for <strong>Vector 2.0 (DSA &amp; CP Contest)</strong> &amp; Placement OA Strategy session on Tuesday, 15th Sept. Learn advanced problem-solving techniques and algorithmic warfare directly from top tech creators.
+                Joining live for <strong>Vector 2.0 (DSA &amp; CP Contest)</strong> &amp; Placement OA Strategy session on <strong>Tuesday, 15th Sept</strong>. Learn advanced problem-solving techniques and algorithmic warfare directly from top tech creators.
               </p>
 
               <a
@@ -260,7 +260,7 @@ export default function Home() {
                 onClick={() => handleSelectChoice('VECTOR 2.0')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 01 // 4TH YEAR ONLY</div>
+                <div className="tag">NODE / 01 // 15 SEPT 2026</div>
                 <h3 className="flex items-center gap-2">
                   <Code className="w-5 h-5 text-[#05C770]" /> VECTOR 2.0
                 </h3>
@@ -268,9 +268,10 @@ export default function Home() {
                   Premier Data Structures, Algorithms (DSA) &amp; Competitive Programming (CP) contest simulating top tech company hiring assessments.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
-                  <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
-                  <div>&gt;&gt; Data Structures (DSA) &amp; Competitive Programming (CP)</div>
-                  <div>&gt;&gt; Speaker Session by @underratedcoder (15 Sept)</div>
+                  <div className="text-[#05C770] font-bold">&gt;&gt; DATE: TUESDAY, 15 SEPT 2026</div>
+                  <div className="text-gray-300">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
+                  <div>&gt;&gt; Data Structures (DSA) &amp; Competitive Programming</div>
+                  <div>&gt;&gt; Live Session by @underratedcoder</div>
                 </div>
               </article>
 
@@ -280,7 +281,7 @@ export default function Home() {
                 onClick={() => handleSelectChoice('AI/ML WORKSHOP')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 02 // OPEN FOR ALL YEARS</div>
+                <div className="tag">NODE / 02 // 16 SEPT 2026</div>
                 <h3 className="flex items-center gap-2">
                   <Cpu className="w-5 h-5 text-[#73D3FB]" /> AI/ML WORKSHOP
                 </h3>
@@ -288,7 +289,8 @@ export default function Home() {
                   Hands-on corporate workshop on building, fine-tuning, and deploying production LLMs and neural architectures.
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
-                  <div className="text-[#73D3FB] font-bold">&gt;&gt; ELIGIBILITY: OPEN FOR ALL YEARS</div>
+                  <div className="text-[#73D3FB] font-bold">&gt;&gt; DATE: WEDNESDAY, 16 SEPT 2026</div>
+                  <div className="text-gray-300">&gt;&gt; ELIGIBILITY: OPEN FOR ALL YEARS</div>
                   <div>&gt;&gt; LLM Fine-Tuning &amp; Prompt Engineering</div>
                   <div>&gt;&gt; PyTorch Model Deployment</div>
                 </div>
@@ -300,17 +302,17 @@ export default function Home() {
                 onClick={() => handleSelectChoice('BOTH')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 03 // 4TH YEAR ONLY</div>
+                <div className="tag">NODE / 03 // 15 &amp; 16 SEPT</div>
                 <h3 className="flex items-center gap-2">
                   <Layers className="w-5 h-5 text-[#05C770]" /> BOTH TRACKS
                 </h3>
                 <p>
-                  Register once for both experiences: DSA &amp; Competitive Programming (Vector 2.0) + AI/ML Corporate Engineering Workshop.
+                  Register once for both experiences: DSA &amp; CP Contest (15 Sept) + AI/ML Corporate Engineering Workshop (16 Sept).
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
-                  <div className="text-[#05C770] font-bold">&gt;&gt; ELIGIBILITY: 4TH YEAR STUDENTS ONLY</div>
-                  <div>&gt;&gt; DSA, CP &amp; AI/ML Workshop Full Pass</div>
-                  <div>&gt;&gt; Speaker Session Access (15 Sept)</div>
+                  <div className="text-[#05C770] font-bold">&gt;&gt; DATES: 15 &amp; 16 SEPT 2026</div>
+                  <div className="text-gray-300">&gt;&gt; ELIGIBILITY: 4TH YEAR STUDENTS ONLY</div>
+                  <div>&gt;&gt; Complete 2-Day Event Track Access</div>
                 </div>
               </article>
             </div>
