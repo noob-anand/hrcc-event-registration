@@ -179,36 +179,30 @@ export default function Home() {
             <Terminal className="w-4 h-4 text-[#05C770]" />
             <span>TNP X HACKER<b className="text-[#05C770]">RANK</b> CAMPUS CREW // IIIT BHOPAL</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="sys">SYSTEM: OPERATIONAL</div>
-            <Link href="/admin" className="admin-link text-xs font-mono border border-white/10 px-2.5 py-1 rounded bg-white/5 hover:border-[#05C770]">
-              ADMIN ACCESS
-            </Link>
-          </div>
         </div>
 
         {/* HERO SECTION */}
         <section className="hero">
-          <div className="meta">OFFICIAL EVENT REGISTRATION NODE // 15-16 SEPT 2026</div>
+          <div className="meta">OFFICIAL EVENT REGISTRATION NODE // 15-17 SEPT 2026</div>
           <h1>
             TNP X HACKER<span>RANK</span><br />
             CAMPUS <span>CREW</span>
           </h1>
           <p>
-            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. <strong>Vector 2.0 (DSA &amp; CP) is on 15 Sept</strong> (exclusively for 4th Year), and <strong>AI/ML Workshop is on 16 Sept</strong> (open for all years).
+            Two corporate-grade technical experiences organized by TNP Cell &amp; HackerRank Campus Crew IIIT Bhopal. <strong>Vector 2.0 (DSA &amp; CP) is on 15 Sept</strong> (exclusively for 4th Year), <strong>AI/ML Workshop is on 16 Sept</strong> (open for all years), and <strong>Spark x HRCC Speaker Session is on 17 Sept</strong>.
           </p>
         </section>
 
-        {/* HORIZONTAL SPEAKER PROMOTION BANNER */}
+        {/* SPARK X HACKERRANK SPEAKER PROMOTION BANNER (THURSDAY 17 SEPT) */}
         {!confirmedRecord && (
           <div className="speaker-banner">
             <div className="space-y-2 max-w-xl">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-[#05C770]/15 border border-[#05C770]/40 text-[#05C770] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                  <Mic className="w-3 h-3 text-[#05C770]" /> SPECIAL GUEST SPEAKER
+                  <Mic className="w-3 h-3 text-[#05C770]" /> SPARK X HACKERRANK // GUEST SPEAKER
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#73D3FB]/15 border border-[#73D3FB]/40 text-[#73D3FB] font-mono text-[10px] font-bold uppercase tracking-wider">
-                  TUESDAY, 15 SEPT 2026
+                  THURSDAY, 17 SEPT 2026
                 </span>
               </div>
 
@@ -217,7 +211,7 @@ export default function Home() {
               </h3>
 
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Joining live for <strong>Vector 2.0 (DSA &amp; CP Contest)</strong> &amp; Placement OA Strategy session on <strong>Tuesday, 15th Sept</strong>. Learn advanced problem-solving techniques and algorithmic warfare directly from top tech creators.
+                Spark x HackerRank Campus Crew presents a special live Speaker &amp; Mentorship session with <strong>@underratedcoder</strong> on <strong>Thursday, 17th Sept</strong>. Learn real-world problem-solving and placement strategy directly from top tech creators.
               </p>
 
               <a
@@ -271,7 +265,7 @@ export default function Home() {
                   <div className="text-[#05C770] font-bold">&gt;&gt; DATE: TUESDAY, 15 SEPT 2026</div>
                   <div className="text-gray-300">&gt;&gt; ELIGIBILITY: EXCLUSIVELY 4TH YEAR</div>
                   <div>&gt;&gt; Data Structures (DSA) &amp; Competitive Programming</div>
-                  <div>&gt;&gt; Live Session by @underratedcoder</div>
+                  <div>&gt;&gt; Spark x HRCC Speaker Session (17 Sept)</div>
                 </div>
               </article>
 
@@ -302,17 +296,17 @@ export default function Home() {
                 onClick={() => handleSelectChoice('BOTH')}
               >
                 <div className="tick">SELECTED ✓</div>
-                <div className="tag">NODE / 03 // 15 &amp; 16 SEPT</div>
+                <div className="tag">NODE / 03 // 15, 16 &amp; 17 SEPT</div>
                 <h3 className="flex items-center gap-2">
                   <Layers className="w-5 h-5 text-[#05C770]" /> BOTH TRACKS
                 </h3>
                 <p>
-                  Register once for both experiences: DSA &amp; CP Contest (15 Sept) + AI/ML Corporate Engineering Workshop (16 Sept).
+                  Register once for all technical experiences: Vector 2.0 (15 Sept), AI/ML Workshop (16 Sept), and Spark x HRCC Speaker Session (17 Sept).
                 </p>
                 <div className="mt-4 pt-3 border-t border-white/10 space-y-1 text-xs text-gray-400 font-mono">
-                  <div className="text-[#05C770] font-bold">&gt;&gt; DATES: 15 &amp; 16 SEPT 2026</div>
+                  <div className="text-[#05C770] font-bold">&gt;&gt; DATES: 15, 16 &amp; 17 SEPT 2026</div>
                   <div className="text-gray-300">&gt;&gt; ELIGIBILITY: 4TH YEAR STUDENTS ONLY</div>
-                  <div>&gt;&gt; Complete 2-Day Event Track Access</div>
+                  <div>&gt;&gt; Complete Event Track &amp; Speaker Session</div>
                 </div>
               </article>
             </div>
@@ -523,10 +517,7 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer className="footer">
-          <span>TNP X HRCC // INSTITUTIONAL.NODE.IIITB</span>
-          <Link className="admin-link" href="/admin">
-            ADMIN ACCESS PORTAL
-          </Link>
+          <span>TNP X HRCC // INSTITUTIONAL.NODE.IIITB BY A.S.</span>
         </footer>
       </main>
     </div>
