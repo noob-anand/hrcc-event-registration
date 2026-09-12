@@ -441,7 +441,7 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer className="footer">
-          <span>HRCC // INSTITUTIONAL.NODE.IIITB</span>
+          <span>HRCC // INSTITUTIONAL.NODE.IIITB BY A.S.</span>
           <Link className="admin-link" href="/admin">
             ADMIN ACCESS PORTAL
           </Link>
