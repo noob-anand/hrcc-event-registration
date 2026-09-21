@@ -10,7 +10,7 @@ interface EditStudentModalProps {
   onSave: (updatedRecord: RegistrationRecord) => void;
 }
 
-const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
+const YEARS = ['2nd Year', '3rd Year', '4th Year'];
 
 export default function EditStudentModal({ record, onClose, onSave }: EditStudentModalProps) {
   const [formData, setFormData] = useState({ ...record });

@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
-import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink, Sparkles, BookOpen, Compass } from 'lucide-react';
+import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink, Sparkles, BookOpen, Compass, Flame } from 'lucide-react';
 
-const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+const YEARS = ['2nd Year', '3rd Year', '4th Year'];
 
 export default function Home() {
   const [confirmedRecord, setConfirmedRecord] = useState<RegistrationRecord | null>(null);
@@ -17,7 +17,7 @@ export default function Home() {
     phone: '',
     email: '',
     branch: '',
-    year: YEARS[1],
+    year: YEARS[0],
   });
 
   const [formErr, setFormErr] = useState('');
@@ -28,7 +28,7 @@ export default function Home() {
   // Compute session track dynamically by student year
   const computedTrack = ['3rd Year', '4th Year'].includes(formData.year)
     ? 'Placement & Internship Session (3rd & 4th Year)'
-    : 'Roadmap for DSA & Development (1st & 2nd Year)';
+    : 'Roadmap for DSA & Development (2nd Year)';
 
   // Real-time duplicate scholar check
   useEffect(() => {
@@ -138,7 +138,7 @@ export default function Home() {
 
         {/* HERO SECTION */}
         <section className="hero">
-          <div className="meta">SPECIAL GUEST SPEAKER &amp; MASTERCLASS // 25 SEPTEMBER 2026</div>
+          <div className="meta">SPECIAL GUEST SPEAKER &amp; MASTERCLASS // 25 SEPTEMBER 2026 // FIRST COME FIRST SERVED</div>
           <h1>
             HACKER<span>RANK</span><br />
             CAMPUS <span>CREW</span>
@@ -158,6 +158,9 @@ export default function Home() {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-[#05C770]/15 border border-[#05C770]/40 text-[#05C770] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
                   <Mic className="w-3 h-3 text-[#05C770]" /> GUEST SPEAKERS &amp; MENTORS
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-red-500/15 border border-red-500/40 text-red-400 font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 animate-pulse">
+                  <Flame className="w-3 h-3 text-red-400" /> FIRST COME FIRST SERVED // LIMITED SEATS
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#73D3FB]/15 border border-[#73D3FB]/40 text-[#73D3FB] font-mono text-[10px] font-bold uppercase tracking-wider">
                   FRIDAY, 25 SEPT 2026
@@ -187,7 +190,7 @@ export default function Home() {
 
                 <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">
                   <div className="text-[#73D3FB] font-bold flex items-center gap-1.5">
-                    <Compass className="w-4 h-4" /> 1st &amp; 2nd YEAR: ROADMAP FOR DSA &amp; DEVELOPMENT
+                    <Compass className="w-4 h-4" /> 2nd YEAR: ROADMAP FOR DSA &amp; DEVELOPMENT
                   </div>
                 </div>
               </div>
