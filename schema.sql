@@ -1,7 +1,7 @@
 -- ========================================================
 -- HACKERRANK CAMPUS CREW (HRCC) - EVENT REGISTRATION SCHEMA
 -- Database: Supabase PostgreSQL
--- Event: Strategic Chapter Launch 2026 (Capacity: 1000)
+-- Event: Rohit Negi Masterclass 2026 (Capacity: 500)
 -- ========================================================
 
 -- Enable UUID extension if not enabled
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS public.registrations (
     phone VARCHAR(20) NOT NULL,
     branch VARCHAR(100) NOT NULL,
     year VARCHAR(50) NOT NULL,
-    registration_type VARCHAR(50) NOT NULL, -- 'BCC (Best Coder Contest)', 'AI/ML WORKSHOP', 'BOTH'
+    registration_type VARCHAR(100) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
 );
 
@@ -61,14 +61,14 @@ BEGIN
         );
     END IF;
 
-    -- Transactional count lock check for 1000 capacity limit
+    -- Transactional count lock check for 500 capacity limit
     SELECT COUNT(*) INTO v_current_count FROM public.registrations;
 
-    IF v_current_count >= 1000 THEN
+    IF v_current_count >= 500 THEN
         RETURN jsonb_build_object(
             'success', false,
             'code', 'CAPACITY_REACHED',
-            'message', 'REGISTRATION CLOSED: Maximum capacity of 1000 participants has been reached.'
+            'message', 'REGISTRATION CLOSED: Maximum capacity of 500 participants has been reached.'
         );
     END IF;
 
@@ -135,17 +135,17 @@ DECLARE
     v_both INT;
 BEGIN
     SELECT COUNT(*) INTO v_total FROM public.registrations;
-    SELECT COUNT(*) INTO v_vector FROM public.registrations WHERE registration_type = 'BCC (Best Coder Contest)';
-    SELECT COUNT(*) INTO v_aiml FROM public.registrations WHERE registration_type = 'AI/ML WORKSHOP';
-    SELECT COUNT(*) INTO v_both FROM public.registrations WHERE registration_type = 'BOTH';
+    SELECT COUNT(*) INTO v_vector FROM public.registrations WHERE registration_type ILIKE '%Placement & Internship%';
+    SELECT COUNT(*) INTO v_aiml FROM public.registrations WHERE registration_type ILIKE '%Roadmap%';
+    SELECT COUNT(*) INTO v_both FROM public.registrations WHERE registration_type ILIKE '%Speaker%';
 
     RETURN jsonb_build_object(
         'total', v_total,
         'vector', v_vector,
         'aiml', v_aiml,
         'both', v_both,
-        'max_capacity', 1000,
-        'remaining', GREATEST(0, 1000 - v_total)
+        'max_capacity', 500,
+        'remaining', GREATEST(0, 500 - v_total)
     );
 END;
 $$;

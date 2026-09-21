@@ -49,8 +49,8 @@ cp .env.example .env.local
 
 Edit `.env.local`:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUPABASE_URL=https://your-supabase-project.supabase.co
+SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
 
 ADMIN_PASSWORD=admin2026
@@ -74,8 +74,8 @@ Open `http://localhost:3000` in your browser.
 3. Open the **SQL Editor** tab in Supabase.
 4. Copy all SQL code from `schema.sql` in this repository and run it.
 5. Get your Project API Keys from **Project Settings -> API**:
-   - `Project URL` -> `NEXT_PUBLIC_SUPABASE_URL`
-   - `anon public` key -> `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `Project URL` -> `SUPABASE_URL`
+   - `anon public` key -> `SUPABASE_ANON_KEY`
    - `service_role` key -> `SUPABASE_SERVICE_ROLE_KEY`
 
 ---
@@ -86,8 +86,8 @@ Open `http://localhost:3000` in your browser.
 2. Log into [Vercel](https://vercel.com) and click **Add New Project**.
 3. Import your GitHub repository.
 4. Add Environment Variables under **Environment Variables**:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `ADMIN_PASSWORD`
 5. Click **Deploy**. Vercel will build and deploy the platform in under a minute.

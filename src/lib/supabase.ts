@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { RegistrationRecord, EventStats, generateRegistrationId } from './utils';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 export const isSupabaseConfigured = Boolean(
@@ -53,7 +53,7 @@ export async function getStatsDb(): Promise<EventStats> {
     // Direct count fallback query
     const { count: total } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true });
     const { count: vector } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Placement & Internship%');
-    const { count: aiml } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Placement Roadmap%');
+    const { count: aiml } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Roadmap%');
     const { count: both } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Speaker%');
 
     const tot = total || 0;
@@ -62,14 +62,14 @@ export async function getStatsDb(): Promise<EventStats> {
       vector: vector || 0,
       aiml: aiml || 0,
       both: both || 0,
-      max_capacity: 1000,
-      remaining: Math.max(0, 1000 - tot)
+      max_capacity: 500,
+      remaining: Math.max(0, 500 - tot)
     };
   }
 
   const total = memoryStore.length;
   const vector = memoryStore.filter(r => r.registration_type.includes('Placement & Internship')).length;
-  const aiml = memoryStore.filter(r => r.registration_type.includes('Placement Roadmap')).length;
+  const aiml = memoryStore.filter(r => r.registration_type.includes('Roadmap')).length;
   const both = memoryStore.filter(r => r.registration_type.includes('Speaker')).length;
 
   return {
@@ -77,8 +77,8 @@ export async function getStatsDb(): Promise<EventStats> {
     vector,
     aiml,
     both,
-    max_capacity: 1000,
-    remaining: Math.max(0, 1000 - total)
+    max_capacity: 500,
+    remaining: Math.max(0, 500 - total)
   };
 }
 
@@ -135,11 +135,11 @@ export async function registerStudentDb(data: {
     };
   }
 
-  if (memoryStore.length >= 1000) {
+  if (memoryStore.length >= 500) {
     return {
       success: false,
       code: 'CAPACITY_REACHED',
-      message: 'REGISTRATION CLOSED: Maximum capacity of 1000 participants has been reached.'
+      message: 'REGISTRATION CLOSED: Maximum capacity of 500 participants has been reached.'
     };
   }
 

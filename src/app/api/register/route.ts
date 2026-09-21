@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       if (['3rd Year', '4th Year'].includes(year)) {
         registration_type = 'Placement & Internship Session (3rd & 4th Year)';
       } else {
-        registration_type = 'Placement Roadmap (1st & 2nd Year)';
+        registration_type = 'Roadmap for DSA & Development (1st & 2nd Year)';
       }
     }
 

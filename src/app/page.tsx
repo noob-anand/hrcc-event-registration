@@ -28,7 +28,7 @@ export default function Home() {
   // Compute session track dynamically by student year
   const computedTrack = ['3rd Year', '4th Year'].includes(formData.year)
     ? 'Placement & Internship Session (3rd & 4th Year)'
-    : 'Placement Roadmap (1st & 2nd Year)';
+    : 'Roadmap for DSA & Development (1st & 2nd Year)';
 
   // Real-time duplicate scholar check
   useEffect(() => {
@@ -147,7 +147,7 @@ export default function Home() {
             &gt;&gt; ROHIT NEGI SPEAKER SESSION
           </h2>
           <p className="mt-3">
-            An exclusive live masterclass &amp; placement mentorship session with <strong>Rohit Negi</strong> (Founder of <strong>Coder Army</strong>, Ex-Uber, M.Tech IIT Guwahati AIR 202) organized by HackerRank Campus Crew x Spark IIIT Bhopal on <strong>25 September 2026</strong>.
+            An exclusive live masterclass &amp; placement mentorship session with <strong>Rohit Negi</strong> (Founder of <strong>Coder Army</strong>, Ex-Uber, M.Tech IIT Guwahati AIR 202) organized by HackerRank Campus Crew IIIT Bhopal on <strong>25 September 2026</strong>.
           </p>
         </section>
 
@@ -158,9 +158,6 @@ export default function Home() {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-[#05C770]/15 border border-[#05C770]/40 text-[#05C770] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
                   <Mic className="w-3 h-3 text-[#05C770]" /> GUEST SPEAKER &amp; MENTOR
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-300 font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-purple-400" /> WITH SPARK
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#73D3FB]/15 border border-[#73D3FB]/40 text-[#73D3FB] font-mono text-[10px] font-bold uppercase tracking-wider">
                   FRIDAY, 25 SEPT 2026
@@ -190,7 +187,7 @@ export default function Home() {
 
                 <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">
                   <div className="text-[#73D3FB] font-bold flex items-center gap-1.5">
-                    <Compass className="w-4 h-4" /> 1st &amp; 2nd YEAR: ROADMAP FOR PLACEMENT
+                    <Compass className="w-4 h-4" /> 1st &amp; 2nd YEAR: ROADMAP FOR DSA &amp; DEVELOPMENT
                   </div>
                 </div>
               </div>
