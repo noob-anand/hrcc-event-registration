@@ -142,14 +142,19 @@ body {
 }
 
 .speaker-avatar-circle {
-  width: 110px;
-  height: 110px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
-  padding: 3px;
+  padding: 4px;
   background: linear-gradient(135deg, var(--g), var(--blue));
-  box-shadow: 0 0 25px rgba(5, 199, 112, 0.35);
+  box-shadow: 0 0 35px rgba(5, 199, 112, 0.45);
   flex-shrink: 0;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.speaker-avatar-circle:hover {
+  transform: scale(1.04);
 }
 
 .speaker-img {

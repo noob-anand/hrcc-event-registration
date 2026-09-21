@@ -165,9 +165,14 @@ export default function Home() {
                 ROHIT NEGI // <span className="text-[#05C770]">FOUNDER, CODER ARMY</span>
               </h3>
 
-              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Join <strong>Rohit Negi</strong> (Ex-Uber Engineer, M.Tech IIT Guwahati AIR 202) on <strong>Friday, 25th September 2026</strong> for a high-impact session on cracking top product roles, mastering Data Structures &amp; Algorithms, and building industry-ready tech skills.
-              </p>
+              <div className="space-y-1.5 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
+                <p>
+                  <strong>Achievements:</strong> Founder of <strong>Coder Army</strong>, Ex-Uber Software Engineer, and M.Tech IIT Guwahati topper (GATE AIR 202) who achieved a record-breaking <strong>₹2+ Cr placement package</strong>.
+                </p>
+                <p>
+                  <strong>Session Insights:</strong> On <strong>Friday, 25 Sept 2026</strong>, he will share proven frameworks for cracking tier-1 tech placements, mastering high-yield DSA, and navigating your 4-year engineering roadmap.
+                </p>
+              </div>
 
               {/* YEAR TRACK HIGHLIGHTS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
