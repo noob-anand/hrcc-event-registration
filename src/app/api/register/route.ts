@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     // Determine session track automatically by student year
     let registration_type = body.registration_type;
     if (!registration_type) {
-      if (['3rd Year', '4th Year', '5th Year'].includes(year)) {
+      if (['3rd Year', '4th Year'].includes(year)) {
         registration_type = 'Placement & Internship Session (3rd & 4th Year)';
       } else {
         registration_type = 'Placement Roadmap (1st & 2nd Year)';

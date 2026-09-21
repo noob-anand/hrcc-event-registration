@@ -142,12 +142,12 @@ body {
 }
 
 .speaker-avatar-circle {
-  width: 175px;
-  height: 175px;
+  width: 265px;
+  height: 265px;
   border-radius: 50%;
-  padding: 4px;
+  padding: 5px;
   background: linear-gradient(135deg, var(--g), var(--blue));
-  box-shadow: 0 0 35px rgba(5, 199, 112, 0.45);
+  box-shadow: 0 0 45px rgba(5, 199, 112, 0.5);
   flex-shrink: 0;
   position: relative;
   transition: transform 0.3s ease;

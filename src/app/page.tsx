@@ -6,7 +6,7 @@ import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
 import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink, Sparkles, BookOpen, Compass } from 'lucide-react';
 
-const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
+const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 
 export default function Home() {
   const [confirmedRecord, setConfirmedRecord] = useState<RegistrationRecord | null>(null);
@@ -26,7 +26,7 @@ export default function Home() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Compute session track dynamically by student year
-  const computedTrack = ['3rd Year', '4th Year', '5th Year'].includes(formData.year)
+  const computedTrack = ['3rd Year', '4th Year'].includes(formData.year)
     ? 'Placement & Internship Session (3rd & 4th Year)'
     : 'Placement Roadmap (1st & 2nd Year)';
 
