@@ -144,20 +144,20 @@ export default function Home() {
             CAMPUS <span>CREW</span>
           </h1>
           <h2 className="text-lg sm:text-2xl font-black text-[#05C770] font-mono tracking-tight mt-3 uppercase flex items-center gap-2">
-            &gt;&gt; ROHIT NEGI SPEAKER SESSION
+            &gt;&gt; ROHIT NEGI &amp; ADITYA TANDON SPEAKER SESSION
           </h2>
           <p className="mt-3">
-            An exclusive live masterclass &amp; placement mentorship session with <strong>Rohit Negi</strong> (Founder of <strong>Coder Army</strong>, Ex-Uber, M.Tech IIT Guwahati AIR 202) organized by HackerRank Campus Crew IIIT Bhopal on <strong>25 September 2026</strong>.
+            An exclusive live masterclass &amp; placement mentorship session with <strong>Rohit Negi</strong> (Founder of <strong>Coder Army</strong>, Ex-Uber, M.Tech IIT Guwahati AIR 202) &amp; <strong>Aditya Tandon</strong> (Co-Founder of <strong>Coder Army</strong>) organized by HackerRank Campus Crew IIIT Bhopal on <strong>25 September 2026</strong>.
           </p>
         </section>
 
-        {/* ROHIT NEGI SPEAKER PROMOTION & CODER ARMY BANNER */}
+        {/* ROHIT NEGI & ADITYA TANDON SPEAKER PROMOTION & CODER ARMY BANNER */}
         {!confirmedRecord && (
           <div className="speaker-banner">
             <div className="space-y-3 max-w-xl">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-[#05C770]/15 border border-[#05C770]/40 text-[#05C770] font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                  <Mic className="w-3 h-3 text-[#05C770]" /> GUEST SPEAKER &amp; MENTOR
+                  <Mic className="w-3 h-3 text-[#05C770]" /> GUEST SPEAKERS &amp; MENTORS
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#73D3FB]/15 border border-[#73D3FB]/40 text-[#73D3FB] font-mono text-[10px] font-bold uppercase tracking-wider">
                   FRIDAY, 25 SEPT 2026
@@ -165,15 +165,15 @@ export default function Home() {
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
-                ROHIT NEGI // <span className="text-[#05C770]">FOUNDER, CODER ARMY</span>
+                ROHIT NEGI &amp; ADITYA TANDON // <span className="text-[#05C770]">CODER ARMY</span>
               </h3>
 
               <div className="space-y-1.5 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
                 <p>
-                  <strong>Achievements:</strong> Founder of <strong>Coder Army</strong>, Ex-Uber Software Engineer, and M.Tech IIT Guwahati topper (GATE AIR 202) who achieved a record-breaking <strong>₹2+ Cr placement package</strong>.
+                  <strong>Rohit Negi:</strong> Founder of <strong>Coder Army</strong>, Ex-Uber Software Engineer, and M.Tech IIT Guwahati topper (GATE AIR 202) who achieved a record-breaking <strong>₹2+ Cr placement package</strong>.
                 </p>
                 <p>
-                  <strong>Session Insights:</strong> On <strong>Friday, 25 Sept 2026</strong>, he will share proven frameworks for cracking tier-1 tech placements, mastering high-yield DSA, and navigating your 4-year engineering roadmap.
+                  <strong>Aditya Tandon:</strong> Co-Founder of <strong>Coder Army</strong>, tech mentor &amp; educator empowering thousands of engineering students to master software development &amp; placement readiness.
                 </p>
               </div>
 
@@ -211,16 +211,37 @@ export default function Home() {
               </div>
             </div>
 
-            {/* ROHIT NEGI PHOTO IN CIRCLE ON RIGHT */}
-            <div className="speaker-avatar-circle">
-              <img
-                src="/speaker.png"
-                alt="Rohit Negi - Founder, Coder Army"
-                className="speaker-img"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80";
-                }}
-              />
+            {/* DUAL SPEAKER PHOTOS IN CIRCLES ON RIGHT */}
+            <div className="dual-speaker-wrapper">
+              <div className="speaker-card-item">
+                <div className="speaker-avatar-circle-sm">
+                  <img
+                    src="/speaker.png"
+                    alt="Rohit Negi - Founder, Coder Army"
+                    className="speaker-img"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80";
+                    }}
+                  />
+                </div>
+                <span className="font-mono text-[10px] text-[#05C770] font-bold">ROHIT NEGI</span>
+                <span className="font-mono text-[9px] text-gray-400 uppercase">FOUNDER</span>
+              </div>
+
+              <div className="speaker-card-item">
+                <div className="speaker-avatar-circle-sm">
+                  <img
+                    src="/speaker2.png"
+                    alt="Aditya Tandon - Co-Founder, Coder Army"
+                    className="speaker-img"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80";
+                    }}
+                  />
+                </div>
+                <span className="font-mono text-[10px] text-[#73D3FB] font-bold">ADITYA TANDON</span>
+                <span className="font-mono text-[9px] text-gray-400 uppercase">CO-FOUNDER</span>
+              </div>
             </div>
           </div>
         )}
