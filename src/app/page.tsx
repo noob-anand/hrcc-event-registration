@@ -132,7 +132,7 @@ export default function Home() {
         <div className="top">
           <div className="brand flex items-center gap-2">
             <Terminal className="w-4 h-4 text-[#05C770]" />
-            <span>HACKER<b className="text-[#05C770]">RANK</b> CAMPUS CREW // IIIT BHOPAL</span>
+            <span>HACKER<b className="text-[#05C770]">RANK</b> CAMPUS CREW X TNP // IIIT BHOPAL</span>
           </div>
         </div>
 
@@ -141,7 +141,8 @@ export default function Home() {
           <div className="meta">SPECIAL GUEST SPEAKER &amp; MASTERCLASS // 25 SEPTEMBER 2026 // FIRST COME FIRST SERVED</div>
           <h1>
             HACKER<span>RANK</span><br />
-            CAMPUS <span>CREW</span>
+            CAMPUS <span>CREW</span><br />
+            X <span>TNP</span>
           </h1>
           <h2 className="text-lg sm:text-2xl font-black text-[#05C770] font-mono tracking-tight mt-3 uppercase flex items-center gap-2">
             &gt;&gt; ROHIT NEGI &amp; ADITYA TANDON SPEAKER SESSION
