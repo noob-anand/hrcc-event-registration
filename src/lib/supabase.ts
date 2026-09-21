@@ -19,7 +19,7 @@ export const supabaseAdmin = isSupabaseConfigured && supabaseServiceKey
   ? createClient(supabaseUrl, supabaseServiceKey)
   : supabaseClient;
 
-// INITIAL DATABASE STORE (EMPTY FOR FRESH START)
+// INITIAL DATABASE STORE
 let memoryStore: RegistrationRecord[] = [];
 
 // DATABASE OPERATIONAL APIS
@@ -52,9 +52,9 @@ export async function getStatsDb(): Promise<EventStats> {
 
     // Direct count fallback query
     const { count: total } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true });
-    const { count: vector } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'BCC (Best Coder Contest)');
-    const { count: aiml } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'AI/ML WORKSHOP');
-    const { count: both } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).eq('registration_type', 'BOTH');
+    const { count: vector } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Placement & Internship%');
+    const { count: aiml } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Placement Roadmap%');
+    const { count: both } = await supabaseAdmin.from('registrations').select('*', { count: 'exact', head: true }).ilike('registration_type', '%Speaker%');
 
     const tot = total || 0;
     return {
@@ -68,9 +68,9 @@ export async function getStatsDb(): Promise<EventStats> {
   }
 
   const total = memoryStore.length;
-  const vector = memoryStore.filter(r => r.registration_type === 'BCC (Best Coder Contest)').length;
-  const aiml = memoryStore.filter(r => r.registration_type === 'AI/ML WORKSHOP').length;
-  const both = memoryStore.filter(r => r.registration_type === 'BOTH').length;
+  const vector = memoryStore.filter(r => r.registration_type.includes('Placement & Internship')).length;
+  const aiml = memoryStore.filter(r => r.registration_type.includes('Placement Roadmap')).length;
+  const both = memoryStore.filter(r => r.registration_type.includes('Speaker')).length;
 
   return {
     total,
@@ -89,7 +89,7 @@ export async function registerStudentDb(data: {
   email: string;
   branch: string;
   year: string;
-  registration_type: 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
+  registration_type: string;
 }): Promise<{ success: boolean; code: string; message: string; record?: RegistrationRecord }> {
   const scholarUpper = data.scholar_number.trim().toUpperCase();
 

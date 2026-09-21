@@ -7,7 +7,7 @@ export interface RegistrationRecord {
   phone: string;
   branch: string;
   year: string;
-  registration_type: 'BCC (Best Coder Contest)' | 'AI/ML WORKSHOP' | 'BOTH';
+  registration_type: string;
   created_at: string;
 }
 
@@ -20,11 +20,11 @@ export interface EventStats {
   remaining: number;
 }
 
-// Generate unique Registration ID format: HRCC-[VEC|AIML|BOTH]-[SEQUENCE]
+// Generate unique Registration ID format: HRCC-RN-[SEQUENCE]
 export function generateRegistrationId(type: string, sequenceNumber?: number): string {
-  let prefix = 'BOTH';
-  if (type === 'BCC (Best Coder Contest)') prefix = 'VEC';
-  if (type === 'AI/ML WORKSHOP') prefix = 'AIML';
+  let prefix = 'RN';
+  if (type.includes('Placement & Internship')) prefix = 'SENIOR';
+  if (type.includes('Placement Roadmap')) prefix = 'JUNIOR';
 
   const randomNum = sequenceNumber
     ? String(sequenceNumber).padStart(4, '0')
@@ -75,7 +75,7 @@ export function exportToCSV(records: RegistrationRecord[]): void {
     'Email',
     'Branch',
     'Year',
-    'Registration Type',
+    'Registration Track',
     'Registration Time'
   ];
 
@@ -96,7 +96,7 @@ export function exportToCSV(records: RegistrationRecord[]): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', `HRCC_Event_Registrations_${new Date().toISOString().slice(0, 10)}.csv`);
+  link.setAttribute('download', `HRCC_Rohit_Negi_Registrations_${new Date().toISOString().slice(0, 10)}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

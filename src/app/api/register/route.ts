@@ -5,10 +5,10 @@ import { validateEmail, validatePhone, validateScholarNumber } from '@/lib/utils
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, scholar_number, phone, email, branch, year, registration_type } = body;
+    const { name, scholar_number, phone, email, branch, year } = body;
 
     // Validate required fields
-    if (!name || !scholar_number || !phone || !email || !branch || !year || !registration_type) {
+    if (!name || !scholar_number || !phone || !email || !branch || !year) {
       return NextResponse.json({
         success: false,
         code: 'MISSING_FIELDS',
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         success: false,
         code: 'INVALID_EMAIL',
-        message: 'Please provide a valid email address (e.g. name@student.iiitbhopal.ac.in).'
+        message: 'Please provide a valid email address.'
       }, { status: 400 });
     }
 
@@ -41,21 +41,14 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    if (!['BCC (Best Coder Contest)', 'AI/ML WORKSHOP', 'BOTH'].includes(registration_type)) {
-      return NextResponse.json({
-        success: false,
-        code: 'INVALID_TYPE',
-        message: 'Invalid event registration option selected.'
-      }, { status: 400 });
-    }
-
-    // Eligibility check: BCC (Best Coder Contest) & Both are exclusively for 4th Year students
-    if ((registration_type === 'BCC (Best Coder Contest)' || registration_type === 'BOTH') && year !== '4th Year') {
-      return NextResponse.json({
-        success: false,
-        code: 'ELIGIBILITY_RESTRICTION',
-        message: 'ELIGIBILITY RESTRICTION: BCC (Best Coder Contest) is open exclusively for 4th Year students. Please select AI/ML Workshop or update Year.'
-      }, { status: 400 });
+    // Determine session track automatically by student year
+    let registration_type = body.registration_type;
+    if (!registration_type) {
+      if (['3rd Year', '4th Year', '5th Year'].includes(year)) {
+        registration_type = 'Placement & Internship Session (3rd & 4th Year)';
+      } else {
+        registration_type = 'Placement Roadmap (1st & 2nd Year)';
+      }
     }
 
     // Process Database Registration

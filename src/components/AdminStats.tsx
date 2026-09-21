@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Users, Code, Cpu, Layers, Flame } from 'lucide-react';
+import { Users, GraduationCap, Compass, Sparkles, Flame } from 'lucide-react';
 import { EventStats } from '@/lib/utils';
 
 interface AdminStatsProps {
@@ -28,45 +28,45 @@ export default function AdminStats({ stats }: AdminStatsProps) {
         </div>
       </div>
 
-      {/* BCC (Best Coder Contest) */}
+      {/* PLACEMENT & INTERNSHIP (3rd & 4th YEAR) */}
       <div className="bento-card p-5 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3">
-          <span className="card-meta !mb-0 text-xs text-[#05C770]">BCC (Best Coder Contest)</span>
+          <span className="card-meta !mb-0 text-xs text-[#05C770]">3rd & 4th YEAR TRACK</span>
           <div className="p-2 rounded bg-white/5 border border-white/10 text-[#05C770]">
-            <Code className="w-4 h-4" />
+            <GraduationCap className="w-4 h-4" />
           </div>
         </div>
         <div>
           <span className="text-3xl font-black font-mono text-white tracking-tight">{stats.vector}</span>
-          <span className="text-[10px] font-mono text-gray-400 block mt-1">OA SPEED CODERS</span>
+          <span className="text-[10px] font-mono text-gray-400 block mt-1">PLACEMENT SESSION</span>
         </div>
       </div>
 
-      {/* AI/ML WORKSHOP */}
+      {/* ROADMAP (1st & 2nd YEAR) */}
       <div className="bento-card p-5 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3">
-          <span className="card-meta !mb-0 text-xs text-[#73D3FB]">AI/ML WORKSHOP</span>
+          <span className="card-meta !mb-0 text-xs text-[#73D3FB]">1st & 2nd YEAR TRACK</span>
           <div className="p-2 rounded bg-white/5 border border-white/10 text-[#73D3FB]">
-            <Cpu className="w-4 h-4" />
+            <Compass className="w-4 h-4" />
           </div>
         </div>
         <div>
           <span className="text-3xl font-black font-mono text-white tracking-tight">{stats.aiml}</span>
-          <span className="text-[10px] font-mono text-gray-400 block mt-1">MODEL ENGINEERS</span>
+          <span className="text-[10px] font-mono text-gray-400 block mt-1">ROADMAP SESSION</span>
         </div>
       </div>
 
-      {/* BOTH TRACKS */}
+      {/* ROHIT NEGI MASTERCLASS */}
       <div className="bento-card p-5 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3">
-          <span className="card-meta !mb-0 text-xs text-purple-400">BOTH TRACKS</span>
+          <span className="card-meta !mb-0 text-xs text-purple-400">SPEAKER MASTERCLASS</span>
           <div className="p-2 rounded bg-white/5 border border-white/10 text-purple-400">
-            <Layers className="w-4 h-4" />
+            <Sparkles className="w-4 h-4" />
           </div>
         </div>
         <div>
           <span className="text-3xl font-black font-mono text-white tracking-tight">{stats.both}</span>
-          <span className="text-[10px] font-mono text-gray-400 block mt-1">FULL PASS NODES</span>
+          <span className="text-[10px] font-mono text-gray-400 block mt-1">ROHIT NEGI PASSES</span>
         </div>
       </div>
 

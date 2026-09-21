@@ -10,7 +10,7 @@ interface EditStudentModalProps {
   onSave: (updatedRecord: RegistrationRecord) => void;
 }
 
-const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
 export default function EditStudentModal({ record, onClose, onSave }: EditStudentModalProps) {
   const [formData, setFormData] = useState({ ...record });
@@ -142,16 +142,16 @@ export default function EditStudentModal({ record, onClose, onSave }: EditStuden
 
           <div>
             <label className="hr-label flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#05C770]" /> REGISTRATION TYPE
+              <Layers className="w-3.5 h-3.5 text-[#05C770]" /> REGISTRATION TRACK / TYPE
             </label>
             <select
               value={formData.registration_type}
-              onChange={(e) => setFormData(prev => ({ ...prev, registration_type: e.target.value as any }))}
+              onChange={(e) => setFormData(prev => ({ ...prev, registration_type: e.target.value }))}
               className="hr-input bg-[#111116] text-white"
             >
-              <option value="BCC (Best Coder Contest)">BCC (Best Coder Contest)</option>
-              <option value="AI/ML WORKSHOP">AI/ML WORKSHOP</option>
-              <option value="BOTH">BOTH</option>
+              <option value="Placement & Internship Session (3rd & 4th Year)">Placement & Internship Session (3rd & 4th Year)</option>
+              <option value="Placement Roadmap (1st & 2nd Year)">Placement Roadmap (1st & 2nd Year)</option>
+              <option value="Rohit Negi Speaker Session & Masterclass">Rohit Negi Speaker Session & Masterclass</option>
             </select>
           </div>
 

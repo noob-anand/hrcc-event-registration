@@ -19,7 +19,7 @@ export default function Header({ isAdmin = false }: HeaderProps) {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs text-[#05C770] font-bold tracking-widest uppercase">
-                TNP X HACKERRANK
+                HACKERRANK CAMPUS CREW X SPARK
               </span>
               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/10 text-gray-300">
                 IIIT BHOPAL
