@@ -10,7 +10,7 @@ const DEGREES = ['B.Tech', 'M.Tech', 'MCA'];
 
 const getAvailableYears = (degree: string) => {
   if (['M.Tech', 'MCA'].includes(degree)) {
-    return ['2nd Year', '3rd Year'];
+    return ['1st Year', '2nd Year', '3rd Year'];
   }
   return ['2nd Year', '3rd Year', '4th Year'];
 };
@@ -39,7 +39,7 @@ export default function Home() {
   // Compute session track dynamically by student year
   const computedTrack = ['3rd Year', '4th Year'].includes(formData.year)
     ? 'Placement & Internship Session (3rd & 4th Year)'
-    : 'Roadmap for DSA & Development (2nd Year)';
+    : 'Roadmap for DSA & Development (1st & 2nd Year)';
 
   // Real-time duplicate scholar check
   useEffect(() => {
