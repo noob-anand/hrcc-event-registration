@@ -5,7 +5,7 @@ import { validateEmail, validatePhone, validateScholarNumber } from '@/lib/utils
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, scholar_number, phone, email, branch, year } = body;
+    const { name, scholar_number, phone, email, degree, branch, year } = body;
 
     // Validate required fields
     if (!name || !scholar_number || !phone || !email || !branch || !year) {
@@ -57,6 +57,7 @@ export async function POST(req: NextRequest) {
       scholar_number,
       phone,
       email,
+      degree: degree || 'B.Tech',
       branch,
       year,
       registration_type

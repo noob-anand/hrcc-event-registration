@@ -11,7 +11,14 @@ interface RegistrationFormProps {
   isCapacityFull?: boolean;
 }
 
-const YEARS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+const DEGREES = ['B.Tech', 'M.Tech', 'MCA'];
+
+const getAvailableYears = (degree: string) => {
+  if (['M.Tech', 'MCA'].includes(degree)) {
+    return ['2nd Year', '3rd Year'];
+  }
+  return ['2nd Year', '3rd Year', '4th Year'];
+};
 
 export default function RegistrationForm({
   selectedEvent,
@@ -23,14 +30,17 @@ export default function RegistrationForm({
     scholar_number: '',
     phone: '',
     email: '',
+    degree: 'B.Tech',
     branch: '',
-    year: YEARS[1],
+    year: '2nd Year',
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [duplicateAlert, setDuplicateAlert] = useState<string | null>(null);
   const [checkingScholar, setCheckingScholar] = useState(false);
+
+  const availableYears = getAvailableYears(formData.degree);
 
   // Debounced real-time duplicate check for Scholar Number
   useEffect(() => {
@@ -62,7 +72,16 @@ export default function RegistrationForm({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'degree') {
+      const validYears = getAvailableYears(value);
+      setFormData(prev => ({
+        ...prev,
+        degree: value,
+        year: validYears.includes(prev.year) ? prev.year : validYears[0]
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
     
     // Clear error for field
     if (errors[name]) {
@@ -252,7 +271,27 @@ export default function RegistrationForm({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {/* DEGREE */}
+          <div>
+            <label className="hr-label flex items-center gap-1.5">
+              <GraduationCap className="w-3.5 h-3.5 text-[#05C770]" /> DEGREE <span className="text-[#05C770]">*</span>
+            </label>
+            <select
+              name="degree"
+              value={formData.degree}
+              onChange={handleChange}
+              disabled={isCapacityFull || isSubmitting}
+              className="hr-input bg-[#111116] border-white/10 text-white cursor-pointer"
+            >
+              {DEGREES.map(d => (
+                <option key={d} value={d} className="bg-[#111116] text-white">
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* BRANCH (TEXT INPUT) */}
           <div>
             <label className="hr-label flex items-center gap-1.5">
@@ -282,7 +321,7 @@ export default function RegistrationForm({
               disabled={isCapacityFull || isSubmitting}
               className="hr-input bg-[#111116] border-white/10 text-white cursor-pointer"
             >
-              {YEARS.map(y => (
+              {availableYears.map(y => (
                 <option key={y} value={y} className="bg-[#111116] text-white">
                   {y}
                 </option>

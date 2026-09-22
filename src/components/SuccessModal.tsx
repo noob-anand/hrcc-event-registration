@@ -92,9 +92,9 @@ export default function SuccessModal({ record, onReset }: SuccessModalProps) {
 
               <div>
                 <span className="text-gray-500 font-mono text-[11px] block uppercase flex items-center gap-1">
-                  <GraduationCap className="w-3 h-3 text-[#05C770]" /> BRANCH & YEAR
+                  <GraduationCap className="w-3 h-3 text-[#05C770]" /> DEGREE, BRANCH &amp; YEAR
                 </span>
-                <span className="text-gray-200 text-xs font-semibold">{record.branch} ({record.year})</span>
+                <span className="text-gray-200 text-xs font-semibold">{record.degree || 'B.Tech'} - {record.branch} ({record.year})</span>
               </div>
 
               <div>

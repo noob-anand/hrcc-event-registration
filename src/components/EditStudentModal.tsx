@@ -10,11 +10,23 @@ interface EditStudentModalProps {
   onSave: (updatedRecord: RegistrationRecord) => void;
 }
 
-const YEARS = ['2nd Year', '3rd Year', '4th Year'];
+const DEGREES = ['B.Tech', 'M.Tech', 'MCA'];
+
+const getAvailableYears = (degree: string) => {
+  if (['M.Tech', 'MCA'].includes(degree)) {
+    return ['2nd Year', '3rd Year'];
+  }
+  return ['2nd Year', '3rd Year', '4th Year'];
+};
 
 export default function EditStudentModal({ record, onClose, onSave }: EditStudentModalProps) {
-  const [formData, setFormData] = useState({ ...record });
+  const [formData, setFormData] = useState({
+    degree: 'B.Tech',
+    ...record
+  });
   const [isSaving, setIsSaving] = useState(false);
+
+  const availableYears = getAvailableYears(formData.degree || 'B.Tech');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +124,28 @@ export default function EditStudentModal({ record, onClose, onSave }: EditStuden
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label className="hr-label flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5 text-[#05C770]" /> DEGREE
+              </label>
+              <select
+                value={formData.degree || 'B.Tech'}
+                onChange={(e) => {
+                  const newDeg = e.target.value;
+                  const validYears = getAvailableYears(newDeg);
+                  setFormData(prev => ({
+                    ...prev,
+                    degree: newDeg,
+                    year: validYears.includes(prev.year) ? prev.year : validYears[0]
+                  }));
+                }}
+                className="hr-input bg-[#111116] text-white"
+              >
+                {DEGREES.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+            </div>
+
             <div>
               <label className="hr-label flex items-center gap-1.5">
                 <GraduationCap className="w-3.5 h-3.5 text-[#05C770]" /> BRANCH
@@ -135,7 +168,7 @@ export default function EditStudentModal({ record, onClose, onSave }: EditStuden
                 onChange={(e) => setFormData(prev => ({ ...prev, year: e.target.value }))}
                 className="hr-input bg-[#111116] text-white"
               >
-                {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
             </div>
           </div>

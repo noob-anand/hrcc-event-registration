@@ -188,7 +188,7 @@ export default function AdminTable({ records, onRefresh }: AdminTableProps) {
                     {r.email}
                   </td>
                   <td className="py-3.5 px-4 text-gray-400 whitespace-nowrap">
-                    {r.branch} ({r.year})
+                    {r.degree || 'B.Tech'} - {r.branch} ({r.year})
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span className={`px-2 py-0.5 rounded font-mono text-[10px] font-bold ${r.registration_type === 'BCC (Best Coder Contest)'
@@ -255,7 +255,7 @@ export default function AdminTable({ records, onRefresh }: AdminTableProps) {
               <p><strong className="text-gray-400 font-mono">SCHOLAR NUMBER:</strong> <span className="text-white">{viewRecord.scholar_number}</span></p>
               <p><strong className="text-gray-400 font-mono">PHONE:</strong> <span className="text-white">{viewRecord.phone}</span></p>
               <p><strong className="text-gray-400 font-mono">EMAIL:</strong> <span className="text-white">{viewRecord.email}</span></p>
-              <p><strong className="text-gray-400 font-mono">BRANCH:</strong> <span className="text-white">{viewRecord.branch} ({viewRecord.year})</span></p>
+              <p><strong className="text-gray-400 font-mono">DEGREE &amp; BRANCH:</strong> <span className="text-white">{viewRecord.degree || 'B.Tech'} - {viewRecord.branch} ({viewRecord.year})</span></p>
               <p><strong className="text-gray-400 font-mono">TYPE:</strong> <span className="text-[#05C770]">{viewRecord.registration_type}</span></p>
               <p><strong className="text-gray-400 font-mono">DATE:</strong> <span className="text-gray-300">{formatDate(viewRecord.created_at)}</span></p>
             </div>

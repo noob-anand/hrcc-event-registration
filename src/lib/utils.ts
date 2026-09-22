@@ -5,6 +5,7 @@ export interface RegistrationRecord {
   name: string;
   email: string;
   phone: string;
+  degree?: string;
   branch: string;
   year: string;
   registration_type: string;
@@ -73,6 +74,7 @@ export function exportToCSV(records: RegistrationRecord[]): void {
     'Scholar Number',
     'Phone',
     'Email',
+    'Degree',
     'Branch',
     'Year',
     'Registration Track',
@@ -85,6 +87,7 @@ export function exportToCSV(records: RegistrationRecord[]): void {
     `"${r.scholar_number}"`,
     `"${r.phone}"`,
     `"${r.email}"`,
+    `"${r.degree || 'B.Tech'}"`,
     `"${r.branch}"`,
     `"${r.year}"`,
     `"${r.registration_type}"`,

@@ -98,11 +98,13 @@ export async function registerStudentDb(data: {
   scholar_number: string;
   phone: string;
   email: string;
+  degree?: string;
   branch: string;
   year: string;
   registration_type: string;
 }): Promise<{ success: boolean; code: string; message: string; record?: RegistrationRecord }> {
   const scholarUpper = data.scholar_number.trim().toUpperCase();
+  const degreeVal = data.degree || 'B.Tech';
 
   // Supabase PostgreSQL Execution
   if (isSupabaseConfigured && supabaseAdmin) {
@@ -116,6 +118,7 @@ export async function registerStudentDb(data: {
         p_name: data.name.trim(),
         p_email: data.email.trim().toLowerCase(),
         p_phone: data.phone.trim(),
+        p_degree: degreeVal,
         p_branch: data.branch,
         p_year: data.year,
         p_registration_type: data.registration_type
@@ -183,6 +186,7 @@ export async function registerStudentDb(data: {
           name: data.name.trim(),
           email: data.email.trim().toLowerCase(),
           phone: data.phone.trim(),
+          degree: degreeVal,
           branch: data.branch,
           year: data.year,
           registration_type: data.registration_type
@@ -242,6 +246,7 @@ export async function registerStudentDb(data: {
     name: data.name.trim(),
     email: data.email.trim().toLowerCase(),
     phone: data.phone.trim(),
+    degree: degreeVal,
     branch: data.branch,
     year: data.year,
     registration_type: data.registration_type,

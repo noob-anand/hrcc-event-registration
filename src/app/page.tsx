@@ -6,7 +6,14 @@ import confetti from 'canvas-confetti';
 import { RegistrationRecord } from '@/lib/utils';
 import { Terminal, Code, Cpu, Layers, User, Hash, Phone, Mail, GraduationCap, Calendar, Download, RefreshCw, AlertTriangle, Mic, ExternalLink, Sparkles, BookOpen, Compass, Flame } from 'lucide-react';
 
-const YEARS = ['2nd Year', '3rd Year', '4th Year'];
+const DEGREES = ['B.Tech', 'M.Tech', 'MCA'];
+
+const getAvailableYears = (degree: string) => {
+  if (['M.Tech', 'MCA'].includes(degree)) {
+    return ['2nd Year', '3rd Year'];
+  }
+  return ['2nd Year', '3rd Year', '4th Year'];
+};
 
 export default function Home() {
   const [confirmedRecord, setConfirmedRecord] = useState<RegistrationRecord | null>(null);
@@ -16,14 +23,18 @@ export default function Home() {
     scholar_number: '',
     phone: '',
     email: '',
+    degree: 'B.Tech',
     branch: '',
-    year: YEARS[0],
+    year: '2nd Year',
   });
 
   const [formErr, setFormErr] = useState('');
   const [duplicateAlert, setDuplicateAlert] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Available year options dynamically calculated based on selected degree
+  const availableYears = getAvailableYears(formData.degree);
 
   // Compute session track dynamically by student year
   const computedTrack = ['3rd Year', '4th Year'].includes(formData.year)
@@ -57,7 +68,16 @@ export default function Home() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'degree') {
+      const validYears = getAvailableYears(value);
+      setFormData(prev => ({
+        ...prev,
+        degree: value,
+        year: validYears.includes(prev.year) ? prev.year : validYears[0]
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
     if (formErr) setFormErr('');
   };
 
@@ -313,6 +333,20 @@ export default function Home() {
                   </div>
 
                   <div className="field">
+                    <label>Degree *</label>
+                    <select
+                      name="degree"
+                      value={formData.degree}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      {DEGREES.map(d => (
+                        <option key={d} value={d}>{d}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="field">
                     <label>Branch *</label>
                     <input
                       name="branch"
@@ -331,7 +365,7 @@ export default function Home() {
                       onChange={handleInputChange}
                       required
                     >
-                      {YEARS.map(y => (
+                      {availableYears.map(y => (
                         <option key={y} value={y}>{y}</option>
                       ))}
                     </select>
@@ -390,8 +424,8 @@ export default function Home() {
                 </div>
 
                 <div className="detail">
-                  <small>BRANCH &amp; YEAR</small>
-                  <b>{confirmedRecord.branch} ({confirmedRecord.year})</b>
+                  <small>DEGREE, BRANCH &amp; YEAR</small>
+                  <b>{confirmedRecord.degree || 'B.Tech'} - {confirmedRecord.branch} ({confirmedRecord.year})</b>
                 </div>
 
                 <div className="detail">

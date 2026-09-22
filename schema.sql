@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS public.registrations (
     name VARCHAR(120) NOT NULL,
     email VARCHAR(120) NOT NULL,
     phone VARCHAR(20) NOT NULL,
+    degree VARCHAR(50) DEFAULT 'B.Tech' NOT NULL,
     branch VARCHAR(100) NOT NULL,
     year VARCHAR(50) NOT NULL,
     registration_type VARCHAR(100) NOT NULL,
@@ -35,6 +36,7 @@ CREATE OR REPLACE FUNCTION public.register_student(
     p_name VARCHAR,
     p_email VARCHAR,
     p_phone VARCHAR,
+    p_degree VARCHAR,
     p_branch VARCHAR,
     p_year VARCHAR,
     p_registration_type VARCHAR
@@ -79,6 +81,7 @@ BEGIN
         name,
         email,
         phone,
+        degree,
         branch,
         year,
         registration_type
@@ -88,6 +91,7 @@ BEGIN
         p_name,
         LOWER(p_email),
         p_phone,
+        p_degree,
         p_branch,
         p_year,
         p_registration_type
