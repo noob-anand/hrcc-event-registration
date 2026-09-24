@@ -270,127 +270,26 @@ export default function Home() {
           </div>
         )}
 
-        {/* SINGLE REGISTRATION FORM */}
+        {/* SINGLE REGISTRATION FORM (CLOSED) */}
         {!confirmedRecord && (
           <section id="formWrap" className="form-wrap show mt-8">
-            <div className="meta">EVENT REGISTRATION FORM // COMPLETED DETAILS</div>
-            <div className="card">
-              {duplicateAlert && (
-                <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/40 text-red-300 font-mono text-xs flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
-                  <span>{duplicateAlert}</span>
-                </div>
-              )}
+            <div className="meta">EVENT REGISTRATION FORM // STATUS</div>
+            <div className="card text-center py-10 px-6 space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-red-500/15 border border-red-500/40 flex items-center justify-center mx-auto text-red-400">
+                <AlertTriangle className="w-7 h-7 text-red-400" />
+              </div>
 
-              <form id="regForm" onSubmit={handleSubmit}>
-                <div className="form">
-                  <div className="field">
-                    <label>Full Name *</label>
-                    <input
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      autoComplete="name"
-                      placeholder="e.g. Anand Sharma"
-                      required
-                    />
-                  </div>
+              <div className="inline-block px-3 py-1 rounded-full bg-red-500/15 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider">
+                CAPACITY FULL
+              </div>
 
-                  <div className="field">
-                    <label>Scholar Number *</label>
-                    <input
-                      name="scholar_number"
-                      value={formData.scholar_number}
-                      onChange={handleInputChange}
-                      placeholder="e.g. 230001234"
-                      required
-                    />
-                  </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                REGISTRATIONS ARE <span className="text-red-400">CLOSED</span>
+              </h2>
 
-                  <div className="field">
-                    <label>Phone Number *</label>
-                    <input
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      inputMode="tel"
-                      placeholder="e.g. +91 9876543210"
-                      required
-                    />
-                  </div>
-
-                  <div className="field">
-                    <label>Email *</label>
-                    <input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      autoComplete="email"
-                      placeholder="name@student.iiitbhopal.ac.in"
-                      required
-                    />
-                  </div>
-
-                  <div className="field">
-                    <label>Degree *</label>
-                    <select
-                      name="degree"
-                      value={formData.degree}
-                      onChange={handleInputChange}
-                      required
-                    >
-                      {DEGREES.map(d => (
-                        <option key={d} value={d}>{d}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="field">
-                    <label>Branch *</label>
-                    <input
-                      name="branch"
-                      value={formData.branch}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Computer Science & Engineering"
-                      required
-                    />
-                  </div>
-
-                  <div className="field">
-                    <label>Year *</label>
-                    <select
-                      name="year"
-                      value={formData.year}
-                      onChange={handleInputChange}
-                      required
-                    >
-                      {availableYears.map(y => (
-                        <option key={y} value={y}>{y}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="field full">
-                    <label>Assigned Session Track (Based on Selected Year) *</label>
-                    <input
-                      id="selectedType"
-                      name="registration_type"
-                      value={computedTrack}
-                      readOnly
-                      style={{ background: 'rgba(5,199,112,0.08)', color: 'var(--g)', fontWeight: 700 }}
-                    />
-                  </div>
-                </div>
-
-                {formErr && <div id="formErr" className="err" style={{ marginTop: '12px' }}>{formErr}</div>}
-
-                <div className="actions">
-                  <button className="btn" id="submitBtn" type="submit" disabled={isSubmitting || Boolean(duplicateAlert)}>
-                    {isSubmitting ? 'SUBMITTING…' : 'CONFIRM REGISTRATION FOR ROHIT NEGI SESSION'}
-                  </button>
-                </div>
-              </form>
+              <p className="text-gray-300 text-sm max-w-md mx-auto leading-relaxed">
+                Registrations for the HackerRank Campus Crew x TNP Speaker Session have reached maximum capacity and are now officially closed.
+              </p>
             </div>
           </section>
         )}
