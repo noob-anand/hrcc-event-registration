@@ -16,7 +16,7 @@ const getAvailableYears = (degree: string) => {
   if (['M.Tech', 'MCA'].includes(degree)) {
     return ['1st Year', '2nd Year', '3rd Year'];
   }
-  return ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+  return ['2nd Year', '3rd Year', '4th Year'];
 };
 
 export default function EditStudentModal({ record, onClose, onSave }: EditStudentModalProps) {
